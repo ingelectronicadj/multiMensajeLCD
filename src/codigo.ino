@@ -15,6 +15,8 @@
  */
  void setup() {
    configurarMonitorSerial();
+   configurarLCD();
+   mensajeCargando();
  }
 
  /****** INICIO FUNCIONES ADICIONALES AL SETUP******/
@@ -23,6 +25,14 @@
    Serial.println("Iniciando...");
  }
 
+ void configurarLCD() {
+   lcd.begin(16, 2);
+ }
+
+ void mensajeCargando() {
+  lcd.clear();
+  lcd.print("....Cargando....");
+}
  /*
  ***********************************************************************
  *              LOOP BUCLE PRINCIPAL
