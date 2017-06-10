@@ -14,7 +14,13 @@
  ***********************************************************************
  */
  void setup() {
+   configurarMonitorSerial();
+ }
 
+ /****** INICIO FUNCIONES ADICIONALES AL SETUP******/
+ void configurarMonitorSerial() {
+   Serial.begin(9600);
+   Serial.println("Iniciando...");
  }
 
  /*
