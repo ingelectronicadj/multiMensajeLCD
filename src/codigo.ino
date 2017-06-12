@@ -22,14 +22,10 @@ void configurarLCD() {
   lcd.begin(16, 2);
 }
 
-void mensajeCargando() {
-  lcd.clear();
-  lcd.print("....Cargando....");
-}
 
 void mensajeBienvenida() {
-  char *mensaje1 = (char*) "    Bienvenido     ";
-  char *mensaje2 = (char*) "Inserte una moneda ";
+  char *mensaje1 = (char*) "          Bienvenido          ";
+  char *mensaje2 = (char*) "      Inserte una moneda      ";
   mostrarMensajesAutoscroll(mensaje1, mensaje2);
 }
 
@@ -37,7 +33,7 @@ void mensajeBienvenida() {
 void mostrarMensajesAutoscroll(char *mensaje, char *mensaje2) {
   //El mensaje1 y el mensaje 2 deben ser del mismo tamaño
   const int tamannoOp = strlen(mensaje2) - 1;
-  int ancho = 15; //El número de columnas del LCD son 16 menos 1 = 15
+  int ancho = 19; //El número de columnas del LCD son 20 menos 1 = 19
   int barrido = 0;
 
   while (barrido <= tamannoOp - ancho) {
@@ -65,7 +61,6 @@ void mostrarMensajesAutoscroll(char *mensaje, char *mensaje2) {
  void setup() {
   configurarMonitorSerial();
   configurarLCD();
-  mensajeCargando();
 
 }
 
