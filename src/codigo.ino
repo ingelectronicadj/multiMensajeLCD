@@ -25,16 +25,22 @@ void configurarLCD() {
 
 
 void mensajeBienvenida() {
-  char *mensaje1 = (char*) "          Bienvenido          ";
-  char *mensaje2 = (char*) "      Inserte una moneda      ";
+  lcd.clear();
+  char *mensaje1 = (char*) "Bienvenido";
+  char *mensaje2 = (char*) "Inserte una moneda";
   char *mensaje3 = (char*) "       Cargue su celular      ";
   char *mensaje4 = (char*) "    Espacio para publicidad   ";
-  mostrarMensajesAutoscroll(mensaje1, mensaje2, mensaje3, mensaje4);
+  lcd.setCursor(5, 0);
+  lcd.print(String(mensaje1));
+  lcd.setCursor(1, 1);
+  lcd.print(String(mensaje2));
+  //mostrarMensajesAutoscroll(mensaje1, mensaje2, mensaje3, mensaje4);
+  mostrarMensajesAutoscroll(mensaje3, mensaje4);
 }
 
 /* Funcion para mostrar mensaje autoScroll en 4 filas */
-void mostrarMensajesAutoscroll(char *mensaje, char *mensaje2, char *mensaje3, char *mensaje4) {
-  //El mensaje1 y el mensaje 2 deben ser del mismo tamaño
+//El mensaje3 y el mensaje4 deben ser del mismo tamaño para que funcione el autoscroll
+void mostrarMensajesAutoscroll(char *mensaje, char *mensaje2) {
   const int tamannoOp = strlen(mensaje2) - 1;
   int ancho = 19; //El número de columnas del LCD son 20 menos 1 = 19
   int barrido = 0;
@@ -42,18 +48,14 @@ void mostrarMensajesAutoscroll(char *mensaje, char *mensaje2, char *mensaje3, ch
   while (barrido <= tamannoOp - ancho) {
     for (int positionCounter = barrido; positionCounter <= ancho + barrido;
         positionCounter++) {
-      lcd.setCursor(positionCounter - barrido, 0); //setCursor(col, row)
-      lcd.print(String(mensaje[positionCounter]));
-      lcd.setCursor(positionCounter - barrido, 1);
-      lcd.print(String(mensaje2[positionCounter]));
       lcd.setCursor(positionCounter - barrido, 2);
-      lcd.print(String(mensaje3[positionCounter]));
+      lcd.print(String(mensaje[positionCounter]));
       lcd.setCursor(positionCounter - barrido, 3);
-      lcd.print(String(mensaje4[positionCounter]));
+      lcd.print(String(mensaje2[positionCounter]));
     }
     barrido++;
     delay(500);
-    lcd.clear();
+  //  lcd.clear();
   }
 }
 
