@@ -19,6 +19,7 @@ void configurarMonitorSerial() {
 }
 
 void configurarLCD() {
+  //lcd.begin(8, 2); //Para LCD 8x2
   //lcd.begin(16, 2); //Para LCD 16x2
   lcd.begin(20, 4); //Para LCD 20x4
 }
